@@ -1,0 +1,102 @@
+﻿<Window x:Class="GiftManager.UI.AdminAddGifts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GiftManager"
+        xmlns:code="clr-namespace:GiftManager.Code"
+        mc:Ignorable="d"
+        Title="Gift Manager" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Background="#29516D"
+        ResizeMode="NoResize">
+    <Border CornerRadius="10" BorderBrush="#AA7939" BorderThickness="3" Background="#AA5839" Margin="24" Padding="4">
+        <Border.Effect>
+            <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="16" />
+        </Border.Effect>
+        <Grid Background="AntiqueWhite">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="cuwCreateUserLabel" Margin="645,24,688,815" TextWrapping="Wrap" FontSize="48"
+                       Text="Add New Gift" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Cursor="None" IsEnabled="False" Foreground="#FF803215" />
+            <TextBox Style="{StaticResource ValidatingControl}" x:Name="giftName" Grid.Column="1"
+                     HorizontalAlignment="Left" Height="49" Margin="656,172,0,0" TextWrapping="Wrap"
+                     VerticalAlignment="Top" Width="332" FontSize="30"
+                     Text="{Binding Path=GiftName, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, NotifyOnValidationError=True}"
+                     RenderTransformOrigin="0.292,0.464" AutomationProperties.IsRequiredForForm="True">
+                <TextBox.DataContext>
+                    <code:Gift />
+                </TextBox.DataContext>
+                <TextBox.Effect>
+                    <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                </TextBox.Effect>
+            </TextBox>
+            <TextBlock x:Name="NameLabel" Grid.Column="1" HorizontalAlignment="Left" Margin="656,109,0,0"
+                       TextWrapping="Wrap" Text="What is the gift name?" VerticalAlignment="Top" IsEnabled="False"
+                       FontSize="30" Foreground="#FF803215" />
+            <TextBlock x:Name="cuwUsernameLabel" Grid.Column="1" HorizontalAlignment="Left" Margin="615,250,0,0"
+                       TextWrapping="Wrap" Text="What is the gift's price (in US $)?" VerticalAlignment="Top"
+                       Width="445" Height="44"
+                       IsEnabled="False" FontSize="30" Foreground="#FF803215" />
+            <TextBox Style="{StaticResource ValidatingControl}" x:Name="giftPrice" Grid.Column="1"
+                     HorizontalAlignment="Center" Height="49" Margin="656,311,696,543" TextWrapping="Wrap"
+                     VerticalAlignment="Center" Width="336" FontSize="30"
+                     Text="{Binding Path=GiftPrice, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, NotifyOnValidationError=True}"
+                     RenderTransformOrigin="0.292,0.464" AutomationProperties.IsRequiredForForm="True"
+                     BorderBrush="#FF708EA4" Foreground="#FF032137" GotFocus="TextOnFocus">
+                <TextBox.DataContext>
+                    <code:Gift />
+                </TextBox.DataContext>
+                <TextBox.Effect>
+                    <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                </TextBox.Effect>
+            </TextBox>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border VerticalAlignment="Bottom" CornerRadius="10" BorderBrush="#FF805115" BorderThickness="1" Background="#FF486E88" Margin="0,0,30,-233" Padding="1" Height="251" HorizontalAlignment="Right" Width="408">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#708EA4" Opacity=".5" ShadowDepth="16" />
+                    </Border.Effect>
+                    <TextBox x:Name="giftDescription" Margin="9,9,9,0"
+                             TextWrapping="Wrap" Height="231" Width="388" Background="White"
+                             Foreground="#FF032137" Text="{Binding Path=GiftDescription}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" SpellCheck.IsEnabled="True" AcceptsReturn="True" Language="en-US" MaxLength="200">
+                        <TextBox.Effect>
+                            <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                        </TextBox.Effect>
+                        <TextBox.DataContext>
+                            <code:Gift/>
+                        </TextBox.DataContext>
+                    </TextBox>
+                </Border>
+            </Grid>
+            <Button Style="{StaticResource Flat_Button}" x:Name="addGiftButton" Content="Add Gift" Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Margin="745,719,780,0" VerticalAlignment="Top" Width="163" RenderTransformOrigin="-0.438,0.579"
+                    Height="45" FontSize="27" Background="#FFAA8D39" BorderBrush="#FF803215" Click="AddGift">
+                <Button.Foreground>
+                    <SolidColorBrush Color="#FFF7F6F4" Opacity="1" />
+                </Button.Foreground>
+                <Button.Effect>
+                    <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                </Button.Effect>
+            </Button>
+            <Button Style="{StaticResource Flat_Button}" x:Name="BackToAdminDashboardButton"
+                    Content="Go Back to Dashboard" Grid.Column="1"
+                    HorizontalAlignment="Center" Margin="26,35,1371,0" VerticalAlignment="Top" Width="291"
+                    RenderTransformOrigin="0.477,-0.992" Height="79" Click="ReturnToDashboard" FontSize="27"
+                    Background="#FFAA8D39" BorderBrush="#FF803215">
+                <Button.Foreground>
+                    <SolidColorBrush Color="#FFF7F6F4" Opacity="1" />
+                </Button.Foreground>
+                <Button.Effect>
+                    <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                </Button.Effect>
+            </Button>
+            <TextBlock x:Name="cuwUsernameLabel_Copy" Grid.Column="1" HorizontalAlignment="Left" Margin="656,396,0,0"
+                       TextWrapping="Wrap" Text="Gift Description (Optional)" VerticalAlignment="Top" Width="353"
+                       Height="44"
+                       IsEnabled="False" FontSize="30" Foreground="#FF803215" />
+
+        </Grid>
+    </Border>
+</Window>

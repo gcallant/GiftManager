@@ -1,0 +1,95 @@
+﻿<Window x:Class="GiftManager.UI.ManageAssignments"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GiftManager.UI"
+        xmlns:code="clr-namespace:GiftManager.Code"
+        mc:Ignorable="d"
+        Title="Gift Manager" Background="#29516D" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+    <Border CornerRadius="10" BorderBrush="#AA7939" BorderThickness="3" Background="#AA5839" Margin="24" Padding="4">
+        <Border.Effect>
+            <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="16" />
+        </Border.Effect>
+        <Grid Background="AntiqueWhite" Height="906">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource Flat_Button}" x:Name="BackToAdminDashboardButton"
+                    Content="Go Back to Dashboard" Grid.Column="1"
+                    HorizontalAlignment="Center" Margin="26,29,1371,0" VerticalAlignment="Top" Width="291"
+                    RenderTransformOrigin="0.477,-0.992" Height="79" Click="ReturnToDashboard" FontSize="27"
+                    Background="#AA8D39" Foreground="#FFF7F6F4" BorderBrush="#FF803215">
+                <Button.Effect>
+                    <DropShadowEffect Color="#708EA4" RenderingBias="Quality" Opacity="0.5" ShadowDepth="8" />
+                </Button.Effect>
+            </Button>
+            <DataGrid Name="dgUsers" Grid.Column="1" Margin="286,129,328,39"
+                      IsReadOnly="False" UseLayoutRounding="True" Width="1074" HorizontalAlignment="Center"
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="25"
+                      FontWeight="Medium" Background="#FF708EA4" BorderBrush="#FF551700" Foreground="#FF29516D"
+                      IsSynchronizedWithCurrentItem="False" HorizontalGridLinesBrush="#FF553000"
+                      VerticalGridLinesBrush="#FF805115" AlternatingRowBackground="#FFFFDAAA" RowBackground="#FFC1AA"
+                      AlternationCount="1" AutoGenerateColumns="False">
+                <DataGrid.Effect>
+                    <DropShadowEffect Color="#708EA4" RenderingBias="Quality" Opacity="0.5" ShadowDepth="8" />
+                </DataGrid.Effect>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="MemberID" Binding="{Binding MemberId}" />
+                    <DataGridTextColumn Header="Member Assigned" Binding="{Binding AssignedMemberId}" />
+                    <DataGridTextColumn Header="Gift Assigned" Binding="{Binding AssignedGiftId}" />
+                </DataGrid.Columns>
+                <DataGrid.DataContext>
+                    <code:Assignments />
+                </DataGrid.DataContext>
+            </DataGrid>
+            <Grid Grid.Column="1" x:Name="blurGrid">
+                <Grid Grid.Column="1" Opacity=".90" HorizontalAlignment="Left" Height="738" Margin="286,129,0,0" VerticalAlignment="Top" Width="1074" Background="#FFF5F6F7" IsEnabled="False">
+                    <Grid.Effect>
+                        <BlurEffect Radius="15" KernelType="Box"/>
+                    </Grid.Effect>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Center" Height="582"  VerticalAlignment="Center" Width="888" Margin="370,214,430,110" >
+                    <TextBlock Text="It doesn't look like you have any assignments yet" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Foreground="#FF29516D"/>
+                    <Button Style="{StaticResource Flat_Button}" x:Name="maGenerateAssignments"
+                Content="Create Assignments"
+                HorizontalAlignment="Center" VerticalAlignment="Top" Width="290"
+                RenderTransformOrigin="0.477,-0.992" Height="80" Click="GenerateAssignments" FontSize="27"
+                Background="#AA8D39" Foreground="#FFF7F6F4" BorderBrush="#FF803215" Margin="0,306,0,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#708EA4" RenderingBias="Quality" Opacity="0.5" ShadowDepth="8" />
+                        </Button.Effect>
+                    </Button>
+                    <TextBlock Text="Should gifts also be randomly assigned?" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Foreground="#FF29516D" Margin="181,78,176,0"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Margin="0,164,0,0"
+                              VerticalAlignment="Top" Width="92" Height="52" IsEditable="False" FontSize="30" Foreground="#FF803215">
+                        <ComboBoxItem Background="#FFF71111" Foreground="#FFFBF9F9" FontSize="30" HorizontalAlignment="Left"
+                                      VerticalAlignment="Center">
+                            Yes
+                        </ComboBoxItem>
+                        <ComboBoxItem IsSelected="True" Background="#FF449117" Foreground="#FFEBF5E4" FontSize="30"
+                                      HorizontalAlignment="Left" VerticalAlignment="Center">
+                            No
+                        </ComboBoxItem>
+                        <ComboBox.Effect>
+                            <DropShadowEffect Color="#708EA4" Opacity=".50" ShadowDepth="8" />
+                        </ComboBox.Effect>
+                    </ComboBox>
+                </Grid>
+            </Grid>
+            <Button Style="{StaticResource Flat_Button}" x:Name="maRegenerateAssignments"
+                Content="Regenerate Assignments"
+                HorizontalAlignment="Center" VerticalAlignment="Top" Width="290"
+                RenderTransformOrigin="0.477,-0.992" Height="80" Click="GenerateAssignments" FontSize="25"
+                Background="#AA8D39" Foreground="#FFF7F6F4" BorderBrush="#FF803215" Margin="668,29,730,0" Grid.Column="1">
+                <Button.Effect>
+                    <DropShadowEffect Color="#708EA4" RenderingBias="Quality" Opacity="0.5" ShadowDepth="8" />
+                </Button.Effect>
+            </Button>
+            <CheckBox x:Name="checkBox" Content="Check to also assign gifts" Grid.Column="1" HorizontalAlignment="Left" Margin="1014,29,0,0" VerticalAlignment="Top" Height="79" Width="312" FontSize="25" ToolTip="Should gifts also be randomly assigned?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Grid>
+    </Border>
+</Window>
+
