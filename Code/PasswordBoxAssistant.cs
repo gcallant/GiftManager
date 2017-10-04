@@ -1,4 +1,16 @@
-﻿namespace GiftManager.Code
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PasswordBoxAssistant.cs" company="functionalfun.net">
+// Author: Samuel Jack
+// License: Creative Commons Attribution 2.0 UK: England & Wales License
+// License URL: https://creativecommons.org/licenses/by/2.0/uk/
+// Source URL: http://blog.functionalfun.net/2008/06/wpf-passwordbox-and-data-binding.html  
+// </copyright>
+// <summary>
+//   Defines the PasswordBoxAssistant type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace GiftManager.Code
 {
    using System.Windows;
    using System.Windows.Controls;
