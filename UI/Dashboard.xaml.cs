@@ -22,7 +22,7 @@ namespace GiftManager.UI
 
       private void ListGifts(object sender, RoutedEventArgs e)
       {
-         var gifts = new ListGifts();
+         var gifts = new ListGifts() {CurrentUsername = this.CurrentUsername};
          gifts.Show();
          this.Close();
       }

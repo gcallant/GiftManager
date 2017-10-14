@@ -28,6 +28,7 @@ namespace GiftManager.UI
     /// </summary>
     public partial class ListGifts : Window
     {
+       public string CurrentUsername { get; set; }
         public ListGifts()
         {
             this.InitializeComponent();
@@ -36,7 +37,7 @@ namespace GiftManager.UI
 
         private void ReturnToDashboard(object sender, RoutedEventArgs e)
         {
-            var dashboard = new Dashboard();
+            var dashboard = new Dashboard() {CurrentUsername = this.CurrentUsername};
             dashboard.Show();
             this.Close();
         }

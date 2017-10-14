@@ -183,7 +183,7 @@ namespace GiftManager.Code
          }
 
          var assignments = new Collection<Assignments>();
-         for(int i = 0; i < members.Count; i++)
+         while(members.Count > 0)
          {
             var assignment1 = new Assignments();
             var assignment2 = new Assignments();
